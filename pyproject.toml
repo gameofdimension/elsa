@@ -15,5 +15,11 @@ dependencies = [
 name = "tuna"
 url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 
+[dependency-groups]
+dev = [
+    "torch>=2.9.1",
+    "transformers==4.57.3",
+]
+
 # [tool.uv.sources]
 # minisgl = { git = "https://github.com/sgl-project/mini-sglang.git" }

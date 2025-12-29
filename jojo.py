@@ -5,6 +5,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers.models import Qwen3ForCausalLM
 
+from elsa.profiler import profile_function
 from prompt import text as aprompt
 
 
@@ -15,6 +16,7 @@ def load_model():
     return tokenizer, model
 
 
+@profile_function()
 def run_inference(model: Qwen3ForCausalLM, tokenizer, prompt):
 
     max_new_tokens = 5
@@ -49,4 +51,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

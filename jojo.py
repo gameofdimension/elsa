@@ -16,7 +16,7 @@ def load_model():
     return tokenizer, model
 
 
-def run_inference(model: Qwen3ForCausalLM, tokenizer, tokenized_inputs, profiler_enabled=True):
+def run_inference(model: Qwen3ForCausalLM, tokenized_inputs, profiler_enabled=True):
     max_new_tokens = 5
     num_beams = 20
     with ProfilerContext(
@@ -35,13 +35,13 @@ def main():
     count = int(sys.argv[1])
     tokenizer, model = load_model()
 
-    run_inference(model, tokenizer, aprompt)
-
-    begin = time.time()
     tokenized_inputs = tokenizer(aprompt, return_tensors="pt").to(model.device)
     input_len = tokenized_inputs["input_ids"].shape[-1]
+    run_inference(model, aprompt)
+
+    begin = time.time()
     for i in range(count):
-        outputs = run_inference(model, tokenizer, tokenized_inputs)
+        outputs = run_inference(model, tokenized_inputs)
         output_len = outputs.shape[-1] - input_len
         print(i, len(outputs), input_len, output_len)
     end = time.time()

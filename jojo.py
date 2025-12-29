@@ -37,7 +37,7 @@ def main():
 
     tokenized_inputs = tokenizer(aprompt, return_tensors="pt").to(model.device)
     input_len = tokenized_inputs["input_ids"].shape[-1]
-    run_inference(model, aprompt)
+    run_inference(model, tokenized_inputs)
 
     begin = time.time()
     for i in range(count):

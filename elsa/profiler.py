@@ -95,6 +95,7 @@ class ProfilerContext:
 
             self.profiler.stop()
 
+            print(self.profiler.key_averages().table(sort_by="self_cuda_time_total"))
             logger.info(f"Exporting trace to: {self.trace_path}")
             self.profiler.export_chrome_trace(str(self.trace_path))
 

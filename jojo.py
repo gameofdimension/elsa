@@ -41,9 +41,11 @@ def main():
 
     begin = time.time()
     for i in range(count):
+        start = time.time()
         outputs = run_inference(model, tokenized_inputs)
+        finish = time.time()
         output_len = outputs.shape[-1] - input_len
-        print(i, len(outputs), input_len, output_len)
+        print(i, len(outputs), input_len, output_len, f"{finish - start:.3f}s")
     end = time.time()
 
     print(f"generate count {count}, mean time {(end - begin) / count:.3f}")

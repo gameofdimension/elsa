@@ -5,9 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    # "minisgl",
-    "nvidia-cutlass-dsl==4.2.1",
-    "sglang>=0.5.6.post2",
+    "minisgl",
+    "nano-vllm",
+    # "nvidia-cutlass-dsl==4.2.1",
+    # "sglang>=0.5.6.post2",
 ]
 
 
@@ -15,5 +16,6 @@ dependencies = [
 name = "tuna"
 url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 
-# [tool.uv.sources]
-# minisgl = { git = "https://github.com/sgl-project/mini-sglang.git" }
+[tool.uv.sources]
+minisgl = { git = "https://github.com/sgl-project/mini-sglang.git" }
+nano-vllm = { git = "https://github.com/GeeeekExplorer/nano-vllm.git" }

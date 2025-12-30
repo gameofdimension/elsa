@@ -17,12 +17,13 @@ def main():
     params = SamplingParams(max_tokens=max_tokens, temperature=0.9)
 
     n = 20
-    prompt_lst = [aprompt for _ in range(n)]
+    prompt_lst = [aprompt[::-1] for _ in range(n)]
     params_lst = [params for _ in range(n)]
     outputs = llm.generate(prompt_lst, sampling_params=params_lst)
 
     begin = time.time()
     for i in range(count):
+        prompt_lst = [aprompt[i:] for _ in range(n)]
         outputs = llm.generate(prompt_lst, sampling_params=params_lst)
         print(i, len(outputs), len(outputs[0]["token_ids"]))
     end = time.time()
